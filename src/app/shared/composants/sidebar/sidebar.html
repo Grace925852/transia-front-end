@@ -1,0 +1,104 @@
+<div class="sidebar-overlay" [class.visible]="isOpen" (click)="close()"></div>
+
+<div class="sidebar" [class.open]="isOpen">
+
+  <!--  MARQUE / LOGO  -->
+  <div class="brand-container">
+    <img src="images/logo-symbole.png" alt="Logo TransIa" class="logo-icon">
+    <div class="brand-text">
+      <div class="brand-name">
+        <span class="big-letter">T</span><span>R</span><span>A</span><span>N</span>
+        <span class="big-letter">S</span><span>I</span><span>A</span>
+      </div>
+      <div class="sub-title">Pilotage & Flux</div>
+    </div>
+    <button class="btn-sidebar-close" (click)="close()" aria-label="Fermer le menu">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+
+  <!--  MENU PRINCIPAL  -->
+  <nav class="menu-section">
+
+    <!-- Dashboard -->
+    <a routerLink="/tableau-de-bord" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">home</i>
+      <span>TABLEAU DE BORD</span>
+    </a>
+
+    <!-- Séparateur -->
+    <div class="menu-separator"></div>
+
+    <!--  TRANSPORT  -->
+    <a routerLink="/villes" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">location_city</i>
+      <span>VILLES</span>
+    </a>
+    <a routerLink="/vehicules" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">directions_bus</i>
+      <span>VÉHICULES</span>
+    </a>
+    <a routerLink="/trajets" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">alt_route</i>
+      <span>TRAJETS</span>
+    </a>
+    <a routerLink="/reservations" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">event_seat</i>
+      <span>RÉSERVATIONS</span>
+    </a>
+
+    <!-- Séparateur -->
+    <div class="menu-separator"></div>
+
+    <!--  COLIS & LIVRAISONS  -->
+    <a routerLink="/colis" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">inventory_2</i>
+      <span>GESTION DES COLIS</span>
+    </a>
+    <a routerLink="/demandes-collecte" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">home_work</i>
+      <span>DEMANDES DE COLLECTE</span>
+    </a>
+    <a routerLink="/tournees" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">local_shipping</i>
+      <span>TOURNÉES</span>
+    </a>
+    <a routerLink="/tarifs-colis" routerLinkActive="active" class="menu-link" (click)="close()">
+      <i class="material-icons">price_change</i>
+      <span>TARIFS COLIS</span>
+    </a>
+
+    <!-- Séparateur -->
+    <div class="menu-separator"></div>
+
+    <!--  ADMIN UNIQUEMENT  -->
+    @if (isAdmin()) {
+      <a routerLink="/agences" routerLinkActive="active" class="menu-link" (click)="close()">
+        <i class="material-icons">business</i>
+        <span>AGENCES</span>
+      </a>
+      <a routerLink="/gestion-comptes" routerLinkActive="active" class="menu-link" (click)="close()">
+        <i class="material-icons">people</i>
+        <span>GESTION DES COMPTES</span>
+      </a>
+      <a routerLink="/feedbacks" routerLinkActive="active" class="menu-link" (click)="close()">
+        <i class="material-icons">feedback</i>
+        <span>FEEDBACKS</span>
+      </a>
+    }
+
+    <!-- Séparateur -->
+    <div class="menu-separator"></div>
+
+    <!--  DÉCONNEXION  -->
+    <a (click)="logout(); close()" class="menu-link logout-link">
+      <i class="material-icons">logout</i>
+      <span>DÉCONNEXION</span>
+    </a>
+
+  </nav>
+</div>
+
+<button class="btn-hamburger" (click)="toggle()" aria-label="Ouvrir le menu">
+  <i class="material-icons">{{ isOpen ? 'close' : 'menu' }}</i>
+</button>

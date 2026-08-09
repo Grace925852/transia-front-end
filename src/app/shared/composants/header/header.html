@@ -1,0 +1,34 @@
+<div class="header-container">
+  <div class="header-actions">
+    <div class="user-profile-wrapper">
+      <div class="user-profile-info" (click)="toggleDropdown()">
+        <span class="welcome-user">Bienvenue, <strong>{{ userName }}</strong></span>
+
+        <!-- <img src="images/admin.jpg" alt="Avatar" class="user-avatar-img"> -->
+        <img src="{{ profilData.photoProfil }}" alt="Avatar" class="user-avatar-img">
+
+        <span class="material-icons arrow-icon">expand_more</span>
+      </div>
+
+      <div class="profile-dropdown" *ngIf="showDropdown">
+        <div class="dropdown-header">
+          <p class="role-badge">{{ userRole }}</p>
+        </div>
+        <hr class="dropdown-divider">
+        <button class="dropdown-item" (click)="ouvrirMonProfil()">
+          <span class="material-icons">person</span>
+          Mon profil
+        </button>
+        <button class="dropdown-item logout-btn" (click)="logout()">
+          <span class="material-icons">logout</span>
+          Se déconnecter
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-modal-mon-profil *ngIf="afficherMonProfil"
+  (fermer)="fermerMonProfil()">
+</app-modal-mon-profil>
